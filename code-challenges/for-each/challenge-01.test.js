@@ -14,7 +14,7 @@ const greeting = (word) => {
 };
 
 const speaker = (message, callback) => {
-  return callback(nessage);
+  return greeting(message);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -41,8 +41,8 @@ const addNumbers = (num, arr, times, callback) => {
    for (let i = 0; i < times; i++){
     callback(arr, num)
 }
-};
   return arr;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -57,11 +57,16 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const removeOne = (num, arr) => {
-  // Solution code here...
+  if(num %3 === 2){
+    arr.pop()
+  }
 };
 
 const removeElements = (arr, callback) => {
-  // Solution code here...
+  for (let i = 0; i < arr.length; i++){
+    callback(arr[i], arr)
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,7 +76,10 @@ Write a function named removeWithForEach that produces the same output as challe
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  // Solution code here...
+  arr.forEach(value =>{
+    callback(value, arr)
+  })
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -85,7 +93,12 @@ This anonymous function should accept up to three arguments: the element, the in
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-  // Solution code here...
+  arr.forEach(function (value, index, arr){
+    if(value %3 === 2){
+      arr.pop()
+    }
+  })
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -106,7 +119,13 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // Solution code here...
+  let newArr = [];
+  availableItems.forEach(inventory => {
+    if(inventory.available === true){
+      newArr.push(inventory.name)
+    }
+  })
+  return newArr
 };
 
 /* ------------------------------------------------------------------------------------------------
