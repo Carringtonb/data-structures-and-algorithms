@@ -137,14 +137,12 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = (arr) => {
-    function getEven(int) {
-        let number = int % 2;
-        if (number == 0){
-            arr.pop(number);
-        }
-        getEven();
-    }
- 
+   for(let i = arr.length; i > 0; i--){
+       if(arr[i-1] % 2 === 0){
+           arr.splice(i - 1, 1);
+       }
+   }
+   return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -163,7 +161,13 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-  // Solution code here...
+  if(numberOfCharacters > str){
+      return ''
+  } else if(numberOfCharacters < 0){
+      return str;
+  }else{
+      return str.slice(0, -numberOfCharacters);
+  }
 };
 
 
